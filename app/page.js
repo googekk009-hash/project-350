@@ -70,7 +70,7 @@ export default function TimelineJournal() {
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-800 tracking-tight">Timeline <span className="text-blue-600">Journal</span></h1>
+          <h1 className="text-4xl font-bold text-gray-800 tracking-tight"> จดบันทึก <span className="text-blue-600">ข้อมูล </span></h1>
           <button 
             onClick={() => { setShowForm(!showForm); setIsEditing(null); setFormData({ title: "", content: "", mood_color: "bg-white" }); }}
             className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all transform hover:scale-110"
@@ -93,7 +93,7 @@ export default function TimelineJournal() {
                 required
               />
               <textarea
-                placeholder="วันนี้เป็นอย่างไรบ้าง?..."
+                placeholder="จดสิ่งที่อยากคิดมาเลย"
                 className="w-full p-3 border border-gray-200 rounded-lg h-32 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                 value={formData.content}
                 onChange={(e) => setFormData({ ...formData, content: e.target.value })}
@@ -115,7 +115,7 @@ export default function TimelineJournal() {
               </div>
               <div className="flex gap-2 pt-2">
                 <button type="submit" className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
-                  <Save size={20} /> {isEditing ? "อัปเดตบันทึก" : "บันทึกลงไทม์ไลน์"}
+                  <Save size={20} /> {isEditing ? "อัปเดตบันทึก" : "บันทึกข้อมูล"}
                 </button>
                 <button type="button" onClick={() => setShowForm(false)} className="px-6 py-3 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition-colors">
                   ยกเลิก
@@ -155,7 +155,7 @@ export default function TimelineJournal() {
               </div>
             ))
           ) : (
-            <div className="ml-8 text-gray-400 italic py-10">ยังไม่มีบันทึกในไทม์ไลน์ของคุณ... เริ่มบันทึกความทรงจำแรกได้เลย!</div>
+            <div className="ml-8 text-gray-400 italic py-10">เริ่มบันทึกความทรงจำแรกได้เลย!</div>
           )}
         </div>
       </div>
