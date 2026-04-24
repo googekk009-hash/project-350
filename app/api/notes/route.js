@@ -14,12 +14,12 @@ export async function GET() {
 
 export async function POST(request) {
   try {
-    const { title, content, mood_color } = await request.json();
+    const { title, content, mood_color, image_url } = await request.json();
     const result = await query({
-      query: "INSERT INTO notes (title, content, mood_color) VALUES (?, ?, ?)",
-      values: [title, content, mood_color],
+      query: "INSERT INTO notes (title, content, mood_color, image_url) VALUES (?, ?, ?, ?)",
+      values: [title, content, mood_color, image_url || null],
     });
-    return NextResponse.json({ id: result.insertId, title, content, mood_color });
+    return NextResponse.json({ id: result.insertId, title, content, mood_color, image_url });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

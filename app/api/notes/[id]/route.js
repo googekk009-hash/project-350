@@ -4,12 +4,12 @@ import { NextResponse } from "next/server";
 export async function PUT(request, { params }) {
   const { id } = await params;
   try {
-    const { title, content, mood_color } = await request.json();
+    const { title, content, mood_color, image_url } = await request.json();
     await query({
-      query: "UPDATE notes SET title = ?, content = ?, mood_color = ? WHERE id = ?",
-      values: [title, content, mood_color, id],
+      query: "UPDATE notes SET title = ?, content = ?, mood_color = ?, image_url = ? WHERE id = ?",
+      values: [title, content, mood_color, image_url || null, id],
     });
-    return NextResponse.json({ id, title, content, mood_color });
+    return NextResponse.json({ id, title, content, mood_color, image_url });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
